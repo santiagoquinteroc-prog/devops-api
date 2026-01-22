@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: devops-api
+  
+  r2dbc:
+    url: ${R2DBC_URL:r2dbc:postgresql://localhost:5432/devopsdb}
+    username: ${R2DBC_USERNAME:postgres}
+    password: ${R2DBC_PASSWORD:admin}
+    pool:
+      initial-size: 5
+      max-size: 10
+      max-idle-time: 30m
+  
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.bootcamp.devops: DEBUG
+    org.springframework.r2dbc: DEBUG
+

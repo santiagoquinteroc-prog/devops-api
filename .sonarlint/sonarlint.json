@@ -1,0 +1,10 @@
+{
+  "sonarLint": {
+    "rules": {
+      "typescript": {
+        "no-empty-function": "off"
+      }
+    }
+  }
+}
+
