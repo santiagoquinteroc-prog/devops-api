@@ -14,6 +14,9 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
+# Install curl for health check
+RUN apk add --no-cache curl
+
 # Create non-root user
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
@@ -24,9 +27,9 @@ COPY --from=build /app/target/*.jar app.jar
 # Expose port
 EXPOSE 8080
 
-# Health check
+# Health check - verifica que el puerto 8080 esté respondiendo
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+  CMD curl -f http://localhost:8080 || exit 1
 
 # Run application
 ENTRYPOINT ["java", "-jar", "app.jar"]

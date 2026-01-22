@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.iml
+*.iws
+*.ipr
+
+# Build artifacts
+target/
+*.jar
+!target/*.jar
+*.war
+*.ear
+*.class
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Documentation
+*.md
+!README.md
+
+# SonarLint
+.sonarlint/
+
+# Plans
+.cursor/
+plans/
+
