@@ -16,6 +16,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeExchange(exchanges -> exchanges
                 .pathMatchers("/help").permitAll()
+                .pathMatchers("/health/alerts-test").permitAll()
                 .pathMatchers("/actuator/**").permitAll()
                 .anyExchange().authenticated()
             )
